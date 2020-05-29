@@ -1,0 +1,11 @@
+.color-picker-view {
+  background-color: #fff;
+ display: flex;
+ justify-content: center;
+}
+
+
+.color-picker-slider {  
+ position: absolute;
+ background-color: #fff;
+}
