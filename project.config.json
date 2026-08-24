@@ -25,8 +25,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.1",
-	"appid": "wx610ea582556c983e",
-	"projectname": "BaiduMini",
+	"appid": "touristappid",
+	"projectname": "WCMiniColorControl",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

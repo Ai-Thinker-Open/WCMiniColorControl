@@ -1,0 +1,31 @@
+name: Repository validation
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Compile validator
+        run: python -m py_compile tools/validate_repository.py
+      - name: Check JavaScript syntax
+        run: |
+          node --check app.js
+          node --check config/mqtt.js
+          node --check pages/index/index.js
+          node --check utils/util.js
+          node --check tools/test_util.js
+      - name: Test color and payload utilities
+        run: node tools/test_util.js
+      - name: Validate repository
+        run: python tools/validate_repository.py

@@ -47,6 +47,15 @@ let hslToRgb = function(h, s, l) {
   return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 }
 
+let isRgbPayload = function(value) {
+  if (!value || typeof value !== 'object') {
+    return false;
+  }
+  return ['Red', 'Green', 'Blue'].every(function(key) {
+    return Number.isInteger(value[key]) && value[key] >= 0 && value[key] <= 255;
+  });
+}
+
 let drawRing = function(ctx, width, height) {
   // 画圆环
   var radius = width / 2;
@@ -102,6 +111,7 @@ let drawSlider = function(ctx, width, height, angle) {
 module.exports = {
   rgb2hsl: rgb2hsl,
   hslToRgb: hslToRgb,
+  isRgbPayload: isRgbPayload,
   drawRing: drawRing,
   drawSlider: drawSlider,
 }
